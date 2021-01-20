@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>dojoConfig = {parseOnLoad: true}</script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css"
+          media="screen">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojox/grid/resources/claroGrid.css"
+          media="screen">
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+    <script>
+        require([
+            "dojo/dom-attr", "dojo/query",
+            "dijit/layout/TabContainer", "dijit/layout/ContentPane",
+            "dojo/domReady!", "dojo/on",
+            "dojo/dom"
+        ], function (attr, query, TabContainer, ContentPane, domReady, on, dom) {
+
+            query(".tc1cp").forEach(function (n) {
+                new ContentPane({
+                    // just pass a title: attribute, this, we're stealing from the node
+                    title: attr.get(n, "title")
+                }, n);
+            });
+            var tc = new TabContainer({
+                style: attr.get("tc1-prog", "style")
+            }, "tc1-prog");
+
+            function addTab() {
+                var cp2 = new ContentPane({
+                    title: "Drinks",
+                    content: "<div class=\"demoLayout\" style=\"height: 100%; width: 100% ;border: white\" data-dojo-type=\"dijit/layout/BorderContainer\"\n" +
+                        "     data-dojo-props=\"design: 'headline'\">\n" +
+                        "    <div class=\"centerPanel\" data-dojo-type=\"dijit/layout/ContentPane\" data-dojo-props=\"region: 'center'\">\n" +
+                        "        <div style=\"float: right ; margin-top: 30px; margin-right: 20px\">\n" +
+                        "            <button data-dojo-type=\"dijit/form/Button\" type=\"button\">Gửi Phê Duyệt</button>\n" +
+                        "            <button data-dojo-type=\"dijit/form/Button\" type=\"button\">Trả Lại</button>\n" +
+                        "            <button data-dojo-type=\"dijit/form/Button\" type=\"button\">Hủy</button>\n" +
+                        "            <button data-dojo-type=\"dijit/form/Button\" type=\"button\">Lưu</button>\n" +
+                        "            <button data-dojo-type=\"dijit/form/Button\" type=\"button\">Đóng</button>\n" +
+                        "        </div>\n" +
+                        "        <table>\n" +
+                        "            <h3>Thông tin chi tiết</h3>\n" +
+                        "            <tr>\n" +
+                        "                <td valign=\"top\"><strong> Name*: </strong></td>\n" +
+                        "                <td><input type=\"text\" required=\"true\" name=\"Name\" id=\"name\" placeholder=\"Your Name\"\n" +
+                        "                           data-dojo-type=\"dijit/form/ValidationTextBox\"\n" +
+                        "                           missingMessage=\"Ooops!  You forgot your name!\"/></td>\n" +
+                        "            </tr>\n" +
+                        "            <tr>\n" +
+                        "                <td valign=\"top\"><strong>Date of Birth*: </strong></td>\n" +
+                        "                <td><input type=\"text\" required=\"true\" name=\"bday\" id=\"bday\" data-dojo-type=\"dijit/form/DateTextBox\"/>\n" +
+                        "                </td>\n" +
+                        "            </tr>\n" +
+                        "            <tr>\n" +
+                        "                <td valign=\"top\"><strong>Gender: </strong></td>\n" +
+                        "                <td>\n" +
+                        "                    <select id=\"stateSelect\" data-dojo-type=\"dijit/form/Select\"\n" +
+                        "                            name=\"stateSelect\">\n" +
+                        "                        <option value=\"\" selected=\"selected\">Gender</option>\n" +
+                        "                        <option value=\"AL\">Male</option>\n" +
+                        "                        <option value=\"AK\">Female</option>\n" +
+                        "                        <option value=\"AZ\">Other</option>\n" +
+                        "                    </select>\n" +
+                        "                </td>\n" +
+                        "            </tr>\n" +
+                        "            <tr>\n" +
+                        "                <td valign=\"top\"><strong> Phone: </strong></td>\n" +
+                        "                <td><input type=\"text\" required=\"true\" name=\"phone\" id=\"phone\" placeholder=\"Enter your phone number\"\n" +
+                        "                           data-dojo-type=\"dijit/form/ValidationTextBox\" missingMessage=\"Ooops!  You forgot your name!\"\n" +
+                        "                           data-dojo-props=\"regExp:'\\\\d{10}', required:true, invalidMessage:'Invalid telephone number.'\"/>\n" +
+                        "                </td>\n" +
+                        "            </tr>\n" +
+                        "            <tr>\n" +
+                        "                <td valign=\"top\"><strong> Phone: </strong></td>\n" +
+                        "                <td><input type=\"text\" required=\"true\" name=\"money\" id=\"money\" placeholder=\"moneyLoan\"\n" +
+                        "                           data-dojo-type=\"dijit/form/ValidationTextBox\" missingMessage=\"Ooops!  You forgot your Money!\"\n" +
+                        "                           data-dojo-props=\"regExp:'\\\\d{10}', required:true, invalidMessage:'Invalid telephone number.'\"/>\n" +
+                        "                </td>\n" +
+                        "            </tr>\n" +
+                        "        </table>\n" +
+                        "\n" +
+                        "    </div>\n" +
+                        "\n" +
+                        "\n" +
+                        "    <div class=\"centerPanel\" data-dojo-type=\"dijit/layout/ContentPane\" data-dojo-props=\"region: 'bottom'\"\n" +
+                        "         style=\"text-align: center\">\n" +
+                        "        <from>\n" +
+                        "            <span>Quang Trưởng - Bá Đạt</span>\n" +
+                        "        </from>\n" +
+                        "\n" +
+                        "    </div>\n" +
+                        "</div>"
+                });
+                tc.addChild(cp2)
+            }
+
+            on(dom.byId("createTabBtn1"), "click", function (evt) {
+                addTab();
+            });
+            tc.startup();
+        });
+    </script>
+</head>
+<body class="claro">
+<div id="tc1-prog" style="width: 100%; height: 550px;">
+    <div class="tc1cp" title="My first tab">
+        Lorem ipsum and all around...
+
+        <button id="createTabBtn1">demo</button>
+    </div>
+    <div class="tc1cp" title="My second tab">
+        Lorem ipsum and all around - second...
+    </div>
+</div>
+
+
+</body>
+</html>

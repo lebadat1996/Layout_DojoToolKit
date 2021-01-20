@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="claro" level="application" />
     <orderEntry type="library" name="claroGrid" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

@@ -14,43 +14,64 @@
     <link rel="stylesheet" href="../DemoDojo/styleTable.css">
 </head>
 <body class="claro">
-<div class="demoLayout" style="height: 100%; width: 100%" data-dojo-type="dijit/layout/BorderContainer"
+<div class="demoLayout" style="height: 100%; width: 100% ;border: white" data-dojo-type="dijit/layout/BorderContainer"
      data-dojo-props="design: 'headline'">
-    <div class="centerPanel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'"
-         style="text-align: center">
-        <from>
-            <input type="text" value="Top">
-
-            <select id="stateSelect" data-dojo-type="dijit/form/Select"
-                    name="stateSelect">
-                <option value="" selected="selected">Select a state</option>
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-                <option value="AR">Arkansas</option>
-                <option value="CA">California</option>
-            </select>
-        </from>
-    </div>
-    <div class="centerPanel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'left'"><from>
-        <input type="text" value="LEFT">
-    </from>
-    </div>
-    <div class="centerPanel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'right'">
-        <from>
-            <input type="text" value="Right">
-            <input type="checkbox" id="dbox1" checked
-                   data-dojo-type="dijit/form/CheckBox">
-            <label for="dbox1">Want</label>
-        </from>
-    </div>
     <div class="centerPanel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'">
-        <div id="grid"></div>
+        <div style="float: right ; margin-top: 30px; margin-right: 20px">
+            <button data-dojo-type="dijit/form/Button" type="button">Gửi Phê Duyệt</button>
+            <button data-dojo-type="dijit/form/Button" type="button">Trả Lại</button>
+            <button data-dojo-type="dijit/form/Button" type="button">Hủy</button>
+            <button data-dojo-type="dijit/form/Button" type="button">Lưu</button>
+            <button data-dojo-type="dijit/form/Button" type="button">Đóng</button>
+        </div>
+        <table>
+            <h3>Thông tin chi tiết</h3>
+            <tr>
+                <td valign="top"><strong> Name*: </strong></td>
+                <td><input type="text" required="true" name="Name" id="name" placeholder="Your Name"
+                           data-dojo-type="dijit/form/ValidationTextBox"
+                           missingMessage="Ooops!  You forgot your name!"/></td>
+            </tr>
+            <tr>
+                <td valign="top"><strong>Date of Birth*: </strong></td>
+                <td><input type="text" required="true" name="bday" id="bday" data-dojo-type="dijit/form/DateTextBox"/>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top"><strong>Gender: </strong></td>
+                <td>
+                    <select id="stateSelect" data-dojo-type="dijit/form/Select"
+                            name="stateSelect">
+                        <option value="" selected="selected">Gender</option>
+                        <option value="AL">Male</option>
+                        <option value="AK">Female</option>
+                        <option value="AZ">Other</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top"><strong> Phone: </strong></td>
+                <td><input type="text" required="true" name="phone" id="phone" placeholder="Enter your phone number"
+                           data-dojo-type="dijit/form/ValidationTextBox" missingMessage="Ooops!  You forgot your name!"
+                           data-dojo-props="regExp:'\\d{10}', required:true, invalidMessage:'Invalid telephone number.'"/>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top"><strong> Phone: </strong></td>
+                <td><input type="text" required="true" name="money" id="money" placeholder="moneyLoan"
+                           data-dojo-type="dijit/form/ValidationTextBox" missingMessage="Ooops!  You forgot your Money!"
+                           data-dojo-props="regExp:'\\d{10}', required:true, invalidMessage:'Invalid telephone number.'"/>
+                </td>
+            </tr>
+        </table>
+
     </div>
+
+
     <div class="centerPanel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'bottom'"
          style="text-align: center">
         <from>
-            <input type="text" value="BOTTOM">
+            <span>Quang Trưởng - Bá Đạt</span>
         </from>
 
     </div>

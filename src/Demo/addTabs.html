@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>dojoConfig = {parseOnLoad: true}</script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css"
+          media="screen">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojox/grid/resources/claroGrid.css"
+          media="screen">
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+    <script>
+        require(["dijit/layout/TabContainer", "dijit/layout/ContentPane", "dojo/domReady!","dojo/on",
+            "dojo/dom"], function (TabContainer, ContentPane,domReady,on,dom) {
+            var tc = new TabContainer({
+                style: "height: 100%; width: 100%;"
+            }, "tc1-prog");
+
+            var cp1 = new ContentPane({
+                title: "Food",
+                content: "We offer amazing food"
+            });
+            tc.addChild(cp1);
+
+            function addTab() {
+                var cp2 = new ContentPane({
+                    title: "Drinks",
+                    content: "We are known for our drinks."
+                });
+                tc.addChild(cp2)
+            }
+            var tabCounter = 1;
+            on(dom.byId("createTabBtn1"), "click", function(evt){
+                addTab("Tab " + (++tabCounter));
+            });
+
+
+            tc.startup();
+        });
+    </script>
+<body class="claro">
+<div style="width: 350px; height: 290px">
+    <div id="tc1-prog"></div>
+    <button id="createTabBtn1">demo</button>
+</div>
+</body>
+</html>
